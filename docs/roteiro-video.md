@@ -57,7 +57,7 @@ Mostrar: o cliente entra só com o CPF e enxerga apenas as próprias OS.
 ### BDD (pendente — Etapa 5)
 
 ## Frases-chave para falar (justificativa da Saga)
-- Escolhemos Saga **orquestrada** porque o fluxo tem ordem rígida e compensações em ordem inversa; um ponto único (OS Service) conhece o estado e facilita auditar e depurar.
+- Foi escolhido Saga **orquestrada** porque o fluxo tem ordem rígida e compensações em ordem inversa; um ponto único (OS Service) conhece o estado e facilita auditar e depurar.
 - Cada serviço grava estado + evento na mesma transação (**outbox**), então nunca perde mensagem; consumidores são **idempotentes** (messageId), porque a entrega é at-least-once.
 - Cada serviço tem seu banco e ninguém acessa o banco do outro.
 
