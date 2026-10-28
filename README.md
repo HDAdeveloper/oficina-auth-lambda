@@ -23,3 +23,8 @@ Servidor local para testes manuais (porta 8090): veja `scripts/local/auth-cpf-e2
 
 Lambda e API Gateway sao criados pelo Terraform (`oficina-infra`, arquivo `lambda_gateway.tf`). O workflow
 `.github/workflows/ci.yml` roda build, testes e cobertura; o pacote `.jar` e o artefato publicado na Lambda.
+
+## Documentação
+
+- [Documentação deste serviço](docs/servico.md): responsabilidade, API, mensagens, modelo e testes.
+- [Arquitetura](docs/arquitetura.md), [modelagem DDD](docs/ddd.md), [eventos e Saga](docs/eventos.md) e [decisões (ADRs)](docs/adr/).
