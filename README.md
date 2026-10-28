@@ -27,4 +27,4 @@ Lambda e API Gateway sao criados pelo Terraform (`oficina-infra`, arquivo `lambd
 ## Documentação
 
 - [Documentação deste serviço](docs/servico.md): responsabilidade, API, mensagens, modelo e testes.
-- [Arquitetura](docs/arquitetura.md), [modelagem DDD](docs/ddd.md), [eventos e Saga](docs/eventos.md) e [decisões (ADRs)](docs/adr/).
+- [Arquitetura](docs/arquitetura.md), [modelagem DDD](docs/ddd.md), [Event Storming](docs/event-storming.md), [eventos e Saga](docs/eventos.md) e [decisões (ADRs)](docs/adr/).
