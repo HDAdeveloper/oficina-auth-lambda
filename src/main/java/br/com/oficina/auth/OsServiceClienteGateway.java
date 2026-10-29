@@ -50,7 +50,7 @@ public class OsServiceClienteGateway implements ClienteGateway {
                 throw new IllegalStateException("OS Service respondeu HTTP " + resp.statusCode());
             }
             JsonNode no = json.readTree(resp.body());
-            return Optional.of(new Cliente(no.path("id").asLong(), no.path("nome").asText(""),
+            return Optional.of(new Cliente(no.path("id").asText(""), no.path("nome").asText(""),
                     no.path("ativo").asBoolean(false)));
         } catch (IOException e) {
             throw new IllegalStateException("Falha ao consultar o OS Service", e);

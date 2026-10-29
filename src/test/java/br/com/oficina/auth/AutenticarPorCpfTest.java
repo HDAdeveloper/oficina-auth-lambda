@@ -23,7 +23,7 @@ class AutenticarPorCpfTest {
 
     @Test
     void clienteAtivoRecebeTokenComPapelClienteEDadosDoCadastro() throws Exception {
-        var resultado = caso(cpf -> Optional.of(new ClienteGateway.Cliente(7L, "Ana Souza", true)))
+        var resultado = caso(cpf -> Optional.of(new ClienteGateway.Cliente("52998224725", "Ana Souza", true)))
                 .autenticar("529.982.247-25");
 
         var ok = (AutenticarPorCpf.Resultado.Autenticado) resultado;
@@ -31,7 +31,7 @@ class AutenticarPorCpfTest {
         JsonNode claims = new ObjectMapper().readTree(JwtHs256Test.decodificar(ok.token().split("\\.")[1]));
         assertThat(claims.get("sub").asText()).isEqualTo("52998224725");
         assertThat(claims.get("roles").get(0).asText()).isEqualTo("CLIENTE");
-        assertThat(claims.get("clienteId").asLong()).isEqualTo(7L);
+        assertThat(claims.get("clienteId").asText()).isEqualTo("52998224725");
         assertThat(claims.get("nome").asText()).isEqualTo("Ana Souza");
         assertThat(claims.get("iat").asLong()).isEqualTo(AGORA.getEpochSecond());
         assertThat(claims.get("exp").asLong()).isEqualTo(AGORA.plusSeconds(3600).getEpochSecond());
@@ -50,7 +50,7 @@ class AutenticarPorCpfTest {
     void clienteInexistenteOuInativoNaoAutoriza() {
         assertThat(caso(cpf -> Optional.empty()).autenticar("52998224725"))
                 .isInstanceOf(AutenticarPorCpf.Resultado.NaoAutorizado.class);
-        assertThat(caso(cpf -> Optional.of(new ClienteGateway.Cliente(7L, "Ana", false))).autenticar("52998224725"))
+        assertThat(caso(cpf -> Optional.of(new ClienteGateway.Cliente("52998224725", "Ana", false))).autenticar("52998224725"))
                 .isInstanceOf(AutenticarPorCpf.Resultado.NaoAutorizado.class);
     }
 }

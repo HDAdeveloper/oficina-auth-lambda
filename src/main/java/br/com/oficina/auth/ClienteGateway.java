@@ -8,6 +8,6 @@ public interface ClienteGateway {
     /** Cliente com esse CPF (só dígitos); vazio se não existir. Lança {@link IllegalStateException} se o serviço falhar. */
     Optional<Cliente> buscarPorCpf(String cpf);
 
-    record Cliente(long id, String nome, boolean ativo) {
+    record Cliente(String id, String nome, boolean ativo) {
     }
 }

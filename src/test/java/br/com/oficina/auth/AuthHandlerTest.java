@@ -23,7 +23,7 @@ class AuthHandlerTest {
         return h.handleRequest(new APIGatewayProxyRequestEvent().withBody(corpo), null);
     }
 
-    private static final AuthHandler ATIVO = handler(cpf -> Optional.of(new ClienteGateway.Cliente(7L, "Ana", true)));
+    private static final AuthHandler ATIVO = handler(cpf -> Optional.of(new ClienteGateway.Cliente("52998224725", "Ana", true)));
 
     @Test
     void cpfCadastradoDevolve200ComToken() {

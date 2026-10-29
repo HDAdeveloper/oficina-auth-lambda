@@ -50,11 +50,11 @@ class OsServiceClienteGatewayTest {
 
     @Test
     void leOClienteEEnviaTokenDeServico() throws Exception {
-        corpo = "{\"id\":7,\"nome\":\"Ana Souza\",\"documento\":\"529.982.247-25\",\"ativo\":true}";
+        corpo = "{\"id\":\"52998224725\",\"nome\":\"Ana Souza\",\"documento\":\"529.982.247-25\",\"ativo\":true}";
 
         var cliente = gateway("/").buscarPorCpf("52998224725");
 
-        assertThat(cliente).contains(new ClienteGateway.Cliente(7L, "Ana Souza", true));
+        assertThat(cliente).contains(new ClienteGateway.Cliente("52998224725", "Ana Souza", true));
         assertThat(caminho.get()).isEqualTo("/api/clientes/documento/52998224725");
         assertThat(autorizacao.get()).startsWith("Bearer ");
         String claims = JwtHs256Test.decodificar(autorizacao.get().substring(7).split("\\.")[1]);
